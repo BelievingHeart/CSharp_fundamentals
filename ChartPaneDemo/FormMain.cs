@@ -14,7 +14,7 @@ namespace ChartPaneDemo
     {
         private static int _numSamples = 10;
 
-        private ChartForm _chartForm = new ChartForm(_numSamples, new Tuple<string, Color>("Hime", Color.Pink),
+        private ChartForm _chartForm = new ChartForm(_numSamples,"HH", new Tuple<string, Color>("Hime", Color.Pink),
             new Tuple<string, Color>("Hina", Color.Blue));
         private Random _ran1 = new Random(42);
 

@@ -23,7 +23,7 @@ namespace ChartPaneDemo
         private List<Queue<double>> _data;
 
 
-        public ChartForm(int numSamples, params Tuple<string, Color>[] seriesParams)
+        public ChartForm(int numSamples, string axisName_Y, params Tuple<string, Color>[] seriesParams)
         {
             _numSeries = seriesParams.Length;
             _chart = new Chart();
@@ -35,7 +35,7 @@ namespace ChartPaneDemo
             SuspendLayout();
 
             initChart();
-            initChartArea();
+            initChartArea(axisName_Y);
             Controls.Add(_chart);
             resetData();
 
@@ -64,7 +64,7 @@ namespace ChartPaneDemo
 
 
 
-        private void initChartArea()
+        private void initChartArea(string axisName_Y)
         {
             ChartArea _chartArea = new ChartArea();
             _chartArea.Name = _chartAreaName;
@@ -99,7 +99,7 @@ namespace ChartPaneDemo
             _chartArea.CursorY.AutoScroll = true;
 
             // Axis
-            _chartArea.AxisY.Title = @"Consumption Value";
+            _chartArea.AxisY.Title = axisName_Y;
             _chartArea.AxisX.Minimum = 0d; //X axis Minimum value
             _chartArea.AxisX.Maximum = 10d;
             _chartArea.AxisX.IsLabelAutoFit = true;
@@ -110,7 +110,7 @@ namespace ChartPaneDemo
             _chartArea.AxisX.Interval = 1;
             _chartArea.AxisX.IntervalAutoMode = IntervalAutoMode.FixedCount;
             _chartArea.AxisX.IntervalType = DateTimeIntervalType.NotSet;
-            _chartArea.AxisX.Title = @"Month";
+            _chartArea.AxisX.Title = @"位置1234分别对应蓝绿黄粉";
             _chartArea.AxisX.TextOrientation = TextOrientation.Auto;
             _chartArea.AxisX.LineWidth = 2;
             _chartArea.AxisX.LineColor = Color.DarkOrchid;

@@ -50,7 +50,7 @@ namespace ChartPaneDemo
             double data2 = _ran1.Next(-10, 10);
 
             if(_chartForm!= null)
-            _chartForm.updateSeries(data1, data2);
+            _chartForm.updateSeries_Invoke(data1, data2);
 
 
             textBox1.Text = data2.ToString();

@@ -7,12 +7,14 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms.VisualStyles;
+using System.Windows.Threading;
 
 namespace ChartPaneDemo
 {
     public class ChartForm: Form
     {
         private Chart _chart;
+        private Form _parentForm;
         private ChartArea _chartArea;
         private List<Series> _seriesList;
         private string _chartAreaName = "data flow view";
@@ -164,7 +166,7 @@ namespace ChartPaneDemo
             }
         }
 
-        public void updateSeries(params double[] newData)
+        public void updateSeries_Invoke(params double[] newData)
         {
             Debug.Assert(newData.Length == _numSeries);
 
@@ -185,7 +187,12 @@ namespace ChartPaneDemo
             // if data enough, add _numSample points to each series
             if (dataEnough())
             {
-                addPointsToSeries();
+                if(this.Created)
+                BeginInvoke((MethodInvoker) (() => { addPointsToSeries(); }));
+                else
+                {
+                    addPointsToSeries();
+                }
             }
            
 

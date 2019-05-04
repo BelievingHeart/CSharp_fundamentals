@@ -9,25 +9,20 @@ namespace ConsoleApp1
 
     public abstract class Entity
     {
-        private int y;
         public int x { get; set; }
 
-        public int Y
-        {
-            get => y;
-            set => y = value;
-        }
+        public int Y { get; set; }
 
         public Entity(int x, int y)
         {
             this.x = x;
-            this.y = y;
+            this.Y = y;
         }
 
         public Entity(Entity entity)
         {
             this.x = entity.x;
-            this.y = entity.y;
+            this.Y = entity.Y;
 
         }
 
@@ -36,16 +31,18 @@ namespace ConsoleApp1
 
     public class Player : Entity
     {
-        public int z { get; }
+        private readonly int _z;
+
+        public int z => _z;
 
         public Player(int x, int y, int z) : base(x, y)
         {
-            this.z = z;
+            this._z = z;
         }
 
         public Player(Entity entity, int z) : base(entity)
         {
-            this.z = z;
+            this._z = z;
         }
 
         public override void print()

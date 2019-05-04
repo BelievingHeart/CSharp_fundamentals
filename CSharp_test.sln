@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polymorphism", "ConsoleApp1\Polymorphism.csproj", "{A9FF478F-6A09-4CFF-AFA4-E3AE9435C322}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{B24B8035-0513-4CD3-85BD-9F0F151F3B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LineChartDemo", "LineChartDemo\LineChartDemo.csproj", "{62797670-F033-4F62-8840-A7D86DFE05DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panes", "Panes\Panes.csproj", "{2389E8F9-87BD-47DA-9BAD-E4D0761702F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChartPaneDemo", "ChartPaneDemo\ChartPaneDemo.csproj", "{AEB6923E-0A03-4357-A1F8-19FE56694C0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{B24B8035-0513-4CD3-85BD-9F0F151F3B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B24B8035-0513-4CD3-85BD-9F0F151F3B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B24B8035-0513-4CD3-85BD-9F0F151F3B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62797670-F033-4F62-8840-A7D86DFE05DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62797670-F033-4F62-8840-A7D86DFE05DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62797670-F033-4F62-8840-A7D86DFE05DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62797670-F033-4F62-8840-A7D86DFE05DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2389E8F9-87BD-47DA-9BAD-E4D0761702F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2389E8F9-87BD-47DA-9BAD-E4D0761702F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2389E8F9-87BD-47DA-9BAD-E4D0761702F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2389E8F9-87BD-47DA-9BAD-E4D0761702F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB6923E-0A03-4357-A1F8-19FE56694C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB6923E-0A03-4357-A1F8-19FE56694C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB6923E-0A03-4357-A1F8-19FE56694C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB6923E-0A03-4357-A1F8-19FE56694C0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

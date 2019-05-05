@@ -13,6 +13,7 @@ namespace ChartPaneDemo
     public partial class FormMain : Form
     {
         private static int _numSamples = 10;
+        private static int _timeStamp = 0;
 
         private ChartForm _chartForm = new ChartForm(_numSamples,"HH", new Tuple<string, Color>("Hime", Color.Pink),
             new Tuple<string, Color>("Hina", Color.Blue));
@@ -41,17 +42,18 @@ namespace ChartPaneDemo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            feedData();
+            feedData(_timeStamp++);
         }
 
 
-        private void feedData()
+        private void feedData(int timeStamp)
         {
-            double data1 = _ran1.Next(-10, 10);
-            double data2 = _ran1.Next(-10, 10);
+            int offset = timeStamp / 30;
+            double data1 = _ran1.Next(-10 + offset, 10 + offset);
+            double data2 = _ran1.Next(-10 + offset, 10 + offset);
 
-            if(_chartForm!= null)
-            _chartForm.updateSeries_Invoke(data1, data2);
+            if (_chartForm != null)
+                _chartForm.updateSeries_Invoke(data1, data2);
 
 
             textBox1.Text = data2.ToString();

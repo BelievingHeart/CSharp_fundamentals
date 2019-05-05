@@ -43,6 +43,16 @@ namespace ChartPaneDemo
             PerformLayout();
 
 
+            FormClosing += ChartForm_FormClosing;
+        }
+
+        void ChartForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
         }
 
         private void resetData()
@@ -101,7 +111,7 @@ namespace ChartPaneDemo
             // Axis
             _chartArea.AxisY.Title = axisName_Y;
             _chartArea.AxisX.Minimum = 0d; //X axis Minimum value
-            _chartArea.AxisX.Maximum = 10d;
+            _chartArea.AxisX.Maximum = _numSamples;
             _chartArea.AxisX.IsLabelAutoFit = true;
             //chartArea.AxisX.LabelAutoFitMaxFontSize = 12;
             _chartArea.AxisX.LabelAutoFitMinFontSize = 5;
@@ -221,6 +231,40 @@ namespace ChartPaneDemo
                     series.Points.AddXY(j + 1, q.ElementAt(j));
                 }
             }
+        }
+
+        public void resetSummery()
+        {
+            foreach (var series in _seriesList)
+            {
+                series.Points.Clear();
+            }
+
+            foreach (var q in _data)
+            {
+                q.Clear();
+            }
+        }
+
+        public void resizeData(int newSize)
+        {
+            // if newSize is smaller, shrink _data
+            if (newSize < _numSamples)
+            {
+                var diff = _numSamples - newSize;
+                foreach (var q in _data)
+                {
+                    for (int i = 0; i < diff; i++)
+                    {
+                        q.Dequeue();
+                    }
+                }
+            }
+
+            // always update _numSamples
+            _numSamples = newSize;
+            _chartArea.AxisX.Maximum = _numSamples;
+
         }
 
     }

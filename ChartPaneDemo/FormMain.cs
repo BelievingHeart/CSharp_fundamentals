@@ -22,6 +22,7 @@ namespace ChartPaneDemo
         public FormMain()
         {
             InitializeComponent();
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -31,7 +32,7 @@ namespace ChartPaneDemo
 
         private void btnPopChartPanelForm_Click(object sender, EventArgs e)
         {
-            _chartForm.ShowDialog();
+            _chartForm.Show();
         }
 
         private void FormMain_Resize(object sender, EventArgs e)
@@ -55,6 +56,20 @@ namespace ChartPaneDemo
 
             textBox1.Text = data2.ToString();
 
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                _chartForm.resizeData(Convert.ToInt32(textBox2.Text));
+
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _chartForm.resetSummery();
         }
 
     }

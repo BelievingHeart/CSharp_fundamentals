@@ -21,11 +21,13 @@ namespace ChartPaneDemo
         private int _numSeries;
         private int _numSamples;
         private List<Queue<double>> _data;
+        private List<double> _averageList;
 
 
         public ChartForm(int numSamples, string axisName_Y, params Tuple<string, Color>[] seriesParams)
         {
             _numSeries = seriesParams.Length;
+            initAverageList(_numSeries);
             _chart = new Chart();
             _chartArea = new ChartArea();
             _seriesList = new List<Series>();
@@ -44,6 +46,15 @@ namespace ChartPaneDemo
 
 
             FormClosing += ChartForm_FormClosing;
+        }
+
+        private void initAverageList(int numSeries)
+        {
+            _averageList = new List<double>();
+            for (int i = 0; i < numSeries; i++)
+            {
+                _averageList.Add(0);
+            }
         }
 
         void ChartForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -137,7 +148,8 @@ namespace ChartPaneDemo
 
             foreach (var param in seriesParams)
             {
-                var series = new Series(param.Item1);
+                string seriesName = param.Item1;
+                var series = new Series(seriesName);
                 series.Color = param.Item2;
 
                 series.ChartArea = _chartAreaName;
@@ -167,12 +179,15 @@ namespace ChartPaneDemo
                 series.EmptyPointStyle = p;
 
                 //Legend
-                series.LegendText = "LegendText：Test One";
+                series.LegendText = seriesName;
                 series.LegendToolTip = @"LegendToolTip";
 
 
                 _seriesList.Add(series);
                 _chart.Series.Add(series);
+
+                _chart.Legends.Add(new Legend(seriesName));
+
             }
         }
 
@@ -197,8 +212,14 @@ namespace ChartPaneDemo
             // if data enough, add _numSample points to each series
             if (dataEnough())
             {
+                // calculate averages
+                calAverages();
                 if(this.Created)
-                BeginInvoke((MethodInvoker) (() => { addPointsToSeries(); }));
+                BeginInvoke((MethodInvoker) (() =>
+                {
+                    addPointsToSeries();
+                    showAveragesOnCurves();
+                }));
                 else
                 {
                     addPointsToSeries();
@@ -206,6 +227,25 @@ namespace ChartPaneDemo
             }
            
 
+        }
+
+        private void showAveragesOnCurves()
+        {
+            for (int i = 0; i < _numSeries; i++)
+            {
+                _seriesList[i].ToolTip = _averageList[i].ToString();
+
+            }
+
+        }
+
+
+        private void calAverages()
+        {
+            for (int i = 0; i < _numSeries; i++)
+            {
+                _averageList[i] = _data.ElementAt(i).Average();
+            }
         }
 
         private bool dataEnough()

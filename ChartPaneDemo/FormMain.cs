@@ -12,7 +12,7 @@ namespace ChartPaneDemo
 {
     public partial class FormMain : Form
     {
-        private static int _numSamples = 10;
+        private static int _numSamples = 5;
         private static int _timeStamp = 0;
 
         private ChartForm _chartForm = new ChartForm(_numSamples,"HH", new Tuple<string, Color>("Hime", Color.Pink),
@@ -23,7 +23,6 @@ namespace ChartPaneDemo
         public FormMain()
         {
             InitializeComponent();
-
         }
 
         private void FormMain_Load(object sender, EventArgs e)
